@@ -554,6 +554,15 @@ function applyTranslations(){
     ua:'Найбільша таксономія HR навичок'
   }[state.lang];
   document.getElementById('t-tagline').textContent=t('tagline');
+  // Заголовок и описание страницы для поиска — на языке версии (?lang=ru|ua)
+  const META={
+    en:['HRMAP 2.3 — The Biggest Taxonomy of HR Skills | Mike Pritula Academy','Interactive taxonomy of 40 HR roles, 71 competencies, 6 grades. Career paths visualization. Self-assessment with PDF report. Free tool by Mike Pritula Academy.'],
+    ru:['HRMAP 2.3 — Крупнейшая таксономия HR навыков | Mike Pritula Academy','Интерактивная таксономия: 40 HR-ролей, 71 компетенция, 6 грейдов. Карьерные пути, самооценка с отчётом в PDF. Бесплатный инструмент Mike Pritula Academy.'],
+    ua:['HRMAP 2.3 — Найбільша таксономія HR навичок | Mike Pritula Academy','Інтерактивна таксономія: 40 HR-ролей, 71 компетенція, 6 грейдів. Кар\'єрні шляхи, самооцінка зі звітом у PDF. Безкоштовний інструмент Mike Pritula Academy.']
+  }[state.lang];
+  document.title=META[0];
+  document.querySelector('meta[name="description"]').content=META[1];
+  document.querySelector('meta[property="og:title"]').content=META[0].replace(' | Mike Pritula Academy','');
   rebuildFilterLabels();
   rebuildCareerDropdown();
   render();
